@@ -4,9 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
         <!--将UserServiceImpl注入到spring中，由容器管理-->
-        <bean id="userService"  class="com.njtech.service.impl.UserServiceImpl">
+        <bean id="userService" name="hhh" class="com.njtech.service.impl.UserServiceImpl" init-method="init" destroy-method="destroy">
                 <property name="userDao" ref="UserDao"></property>
         </bean>
 
-        <bean id="UserDao" class="com.njtech.dao.impl.UserDaoImpl"></bean>
+        <bean id="UserDao" class="com.njtech.dao.impl.UserDaoImpl">
+        </bean>
 </beans>

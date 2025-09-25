@@ -9,8 +9,6 @@ public class ApplicationContextTest {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
         UserService userService = (UserService) applicationContext.getBean("userService");
-        //System.out.println(userService);
-
-
+        System.out.println(userService);
     }
 }
