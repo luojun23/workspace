@@ -5,7 +5,7 @@
 
         <!--将UserServiceImpl注入到spring中，由容器管理-->
         <bean id="userService"  class="com.njtech.service.impl.UserServiceImpl">
-                <property name="UserDao" ref="UserDao"></property>
+                <property name="userDao" ref="UserDao"></property>
         </bean>
 
         <bean id="UserDao" class="com.njtech.dao.impl.UserDaoImpl"></bean>
