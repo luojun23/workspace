@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-        <!--将UserServiceImpl注入到spring中，由容器管理-->
-        <bean id="userService" name="hhh" class="com.njtech.service.impl.UserServiceImpl" init-method="init" destroy-method="destroy">
-                <property name="userDao" ref="UserDao"></property>
-        </bean>
+<!--        &lt;!&ndash;将UserServiceImpl注入到spring中，由容器管理&ndash;&gt;-->
+<!--        <bean id="userService" name="hhh" class="com.njtech.service.impl.UserServiceImpl">-->
+<!--                <property name="userDao" ref="UserDao"></property>-->
+<!--        </bean>-->
 
-        <bean id="UserDao" class="com.njtech.dao.impl.UserDaoImpl">
-        </bean>
+<!--        <bean id="UserDao" class="com.njtech.dao.impl.UserDaoImpl">-->
+<!--        </bean>-->
+        <!--加载属性文件-->
+        <context:property-placeholder location="jdbc.properties"></context:property-placeholder>
+        <!--注解组件扫描：指定的基本包以及子包下的类，识别使用@component注解-->
+        <context:component-scan base-package="com.njtech"/>
 </beans>

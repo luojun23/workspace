@@ -1,14 +1,21 @@
 package com.njtech.test;
 
-import com.njtech.dao.impl.UserDaoImpl;
+import com.njtech.config.SpringConfig;
+import com.njtech.dao.UserDao;
 import com.njtech.service.UserService;
+import com.njtech.service.impl.UserServiceImpl;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class ApplicationContextTest {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-        UserService userService = (UserService) applicationContext.getBean("userService");
-        System.out.println(userService);
+//        ClassPathXmlApplicationContext con = new ClassPathXmlApplicationContext("beans.xml");
+//        Object date = con.getBean("dataSource");
+//        System.out.println(date);
+
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        UserService userService = (UserService)applicationContext.getBean("userService");
+        userService.String();
     }
 }
