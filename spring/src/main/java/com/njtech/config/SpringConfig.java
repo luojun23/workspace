@@ -1,6 +1,7 @@
 package com.njtech.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.njtech.anno.MyMapperScan;
 import com.njtech.imports.MyImportDefinitionRegistrar;
 import com.njtech.imports.MyImportSector;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -15,7 +16,7 @@ import javax.sql.DataSource;
 @PropertySource("classpath:jdbc.properties")
 //Mapper的接口扫描
 @MapperScan("com.njtech.mapper")
-@Import(MyImportDefinitionRegistrar.class)
+@MyMapperScan
 public class SpringConfig {
 
     @Bean
