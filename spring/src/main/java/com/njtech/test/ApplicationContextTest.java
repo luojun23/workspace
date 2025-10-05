@@ -1,5 +1,6 @@
 package com.njtech.test;
 
+import com.njtech.beans.OtherBean;
 import com.njtech.config.SpringConfig;
 import com.njtech.dao.UserDao;
 import com.njtech.service.UserService;
@@ -15,7 +16,9 @@ public class ApplicationContextTest {
 //        System.out.println(date);
 
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
-        UserService userService = (UserService)applicationContext.getBean("userService");
-        userService.String();
+//        UserService userService = (UserService)applicationContext.getBean("userService");
+//        userService.String();
+        OtherBean bean = (OtherBean)applicationContext.getBean("OtherBean");
+        System.out.println(bean);
     }
 }

@@ -1,17 +1,11 @@
 package com.njtech.service.impl;
 
-import com.alibaba.druid.pool.DruidDataSource;
-import com.njtech.dao.UserDao;
 import com.njtech.mapper.UserMapper;
-import com.njtech.pojo.User;
+import com.njtech.entity.pojo.User;
 import com.njtech.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
-import javax.sql.DataSource;
-import java.util.Date;
 import java.util.List;
 
 @Service("userService")

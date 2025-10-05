@@ -1,6 +1,5 @@
-package com.njtech.bean;
+package com.njtech.beans;
 
-import com.njtech.dao.UserDao;
 import com.njtech.service.UserService;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;

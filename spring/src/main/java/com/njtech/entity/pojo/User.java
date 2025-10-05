@@ -1,6 +1,6 @@
-package com.njtech.pojo;
+package com.njtech.entity.pojo;
 
-import com.njtech.enums.DateTimePatternEnum;
+import com.njtech.entity.enums.DateTimePatternEnum;
 import com.njtech.utils.DateUtil;
 import org.springframework.format.annotation.DateTimeFormat;
 
