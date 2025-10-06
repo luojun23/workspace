@@ -11,6 +11,5 @@ public class ApplicationContextAppTest {
         ClassPathXmlApplicationContext con = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserService bean = con.getBean(UserService.class);
         bean.show1();
-
     }
 }

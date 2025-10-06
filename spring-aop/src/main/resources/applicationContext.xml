@@ -2,7 +2,27 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd
+       ">
 
     <context:component-scan base-package="com.njtech"></context:component-scan>
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+<!--    &lt;!&ndash;  配置aop  &ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;    配置切线表达式：指定那些方法被增强    &ndash;&gt;-->
+<!--        <aop:pointcut id="MyPointcut" expression="execution(void com.njtech.service.impl.UserServiceImpl.show1())"/>-->
+<!--        &lt;!&ndash;   配置织入，目的是执行那些切点与那些通知结合     &ndash;&gt;-->
+<!--        <aop:aspect ref="myAdvice">-->
+<!--            <aop:before method="BeforeAdvice" pointcut-ref="MyPointcut"></aop:before>-->
+<!--&lt;!&ndash;            <aop:after method="AfterAdvice" pointcut-ref="MyPointcut"></aop:after>&ndash;&gt;-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
 </beans>
