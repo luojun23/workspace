@@ -23,7 +23,7 @@ public class MockAopBeanPostProcess implements BeanPostProcessor, ApplicationCon
                     (Object proxy, Method method, Object[] args) -> {
                         //执行增强对象的before方法
                         Myadvice bean1 = applicationContext.getBean(Myadvice.class);
-                        bean1.BeforeAdvice();
+//                        bean1.BeforeAdvice();
                         //执行目标对象的目标方法
                         Object result = method.invoke(bean, args);
                         //执行增强对象的after方法
