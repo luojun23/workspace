@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring" />
         <module name="spring-aop" />
+        <module name="spring_trans" />
         <module name="easyjava" />
         <module name="springMVC" />
       </profile>

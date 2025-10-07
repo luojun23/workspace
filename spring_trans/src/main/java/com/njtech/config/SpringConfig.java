@@ -1,13 +1,17 @@
 package com.njtech.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.njtech.anno.MyMapperScan;
-import com.njtech.imports.MyImportDefinitionRegistrar;
-import com.njtech.imports.MyImportSector;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
@@ -16,7 +20,7 @@ import javax.sql.DataSource;
 @PropertySource("classpath:jdbc.properties")
 //Mapper的接口扫描
 @MapperScan("com.njtech.mapper")
-@MyMapperScan
+@EnableTransactionManagement
 public class SpringConfig {
 
     @Bean
@@ -38,6 +42,18 @@ public class SpringConfig {
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+        sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
         return sqlSessionFactoryBean;
+    }
+
+//    @Bean
+//    public void go(){
+//        System.out.println("go go...");
+//    }
+
+    @Bean
+    //告诉 Spring “该用哪个对象来真正管理数据库事务”
+    public PlatformTransactionManager transactionManager(DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
     }
 }
