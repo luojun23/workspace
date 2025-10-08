@@ -4,11 +4,15 @@ package com.njtech.controller;
 import com.njtech.entity.pojo.User;
 import com.njtech.service.quickService;
 import com.njtech.utils.JsonUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Controller
@@ -47,8 +51,13 @@ public class QuickController {
 
     @PostMapping("/show4")
     //文件上传(springmvc默认未开启文件上传，需要自动开启文件上传解析器)
-    public String show4(@RequestBody MultipartFile file){
-        System.out.println(file);
+    public String show4(@RequestBody MultipartFile file) throws IOException {
+        //获得上传文件的输入流
+        InputStream inputStream = file.getInputStream();
+        FileOutputStream out = new FileOutputStream("E:\\" + file.getOriginalFilename());
+        IOUtils.copy(inputStream,out);
+        inputStream.close();
+        out.close();
         return "/index.jsp";
     }
 
