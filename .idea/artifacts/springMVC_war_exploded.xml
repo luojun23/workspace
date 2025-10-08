@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="springMVC:war exploded">
-    <output-path>$PROJECT_DIR$/springMVC/target/springMVC-1.0-SNAPSHOT</output-path>
+    <output-path>$PROJECT_DIR$/spring_mvc/target/springMVC-1.0-SNAPSHOT</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
@@ -14,7 +14,14 @@
           <element id="module-output" name="springMVC" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.1" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.3.7" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:5.3.7" />
           <element id="library" level="project" name="Maven: ch.qos.logback:logback-core:1.2.3" />
           <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf:3.0.12.RELEASE" />
           <element id="library" level="project" name="Maven: ognl:ognl:3.1.26" />
@@ -25,7 +32,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/springMVC/target/springMVC-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/spring_mvc/target/springMVC-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="springMVC/web/Web" />
     </root>
