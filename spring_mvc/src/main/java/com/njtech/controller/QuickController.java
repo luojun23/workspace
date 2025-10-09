@@ -6,14 +6,19 @@ import com.njtech.service.quickService;
 import com.njtech.utils.JsonUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class QuickController {
@@ -62,7 +67,51 @@ public class QuickController {
     }
 
     @RequestMapping("/show5")
-    public String show5(){
+    //接收请求头
+    public String show5(@RequestHeader("accept-encoding") String header){
+        System.out.println(header);
         return "/html1.jsp";
+    }
+
+
+    @RequestMapping("/show6")
+    //接收所有请求头
+    public String show6(@RequestHeader Map<String,String>map){
+        map.forEach((k,v)->{
+            System.out.println(k+"---"+v);
+        });
+        return "/html1.jsp";
+    }
+
+    @RequestMapping("/show7")
+    @ResponseBody
+    //获取cookie
+    public String show7(@CookieValue(value = "user",defaultValue = "") String cookie){
+        return cookie;
+    }
+
+    @RequestMapping("/show8")
+    @ResponseBody
+    //获取cookie
+    public String show8(HttpServletResponse response){
+        Cookie cookie = new Cookie("user", "njtech");
+        cookie.setMaxAge(60*60);//1小时
+        response.addCookie(cookie);
+        return "cookie已写入";
+    }
+
+    @RequestMapping("/show9")
+    @ResponseBody
+    //向request域中注入数据
+    public String show9(HttpServletRequest request){
+        request.setAttribute("user","njtech");
+        return "request";
+    }
+
+    @RequestMapping("/show10")
+    @ResponseBody
+    //获取request域中对象
+    public String show10(@RequestAttribute("user") String user){
+        return user;
     }
 }
