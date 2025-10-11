@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -113,5 +114,36 @@ public class QuickController {
     //获取request域中对象
     public String show10(@RequestAttribute("user") String user){
         return user;
+    }
+
+    @RequestMapping("/forward")
+    //请求转发
+    public String show11(){
+        return "forward:/index.jsp";
+    }
+
+    @RequestMapping("/redirect")
+    //请求重定向:地址会改变http://localhost:8080/springMVC_war_exploded/index.jsp
+    public String redirect(){
+        return "redirect:/index.jsp";
+    }
+
+    @RequestMapping("/modelAndView")
+    public ModelAndView modelAndView(ModelAndView modelAndView){
+        //ModelAndView封装模型数据和视图名
+        //设置模型数据
+        User user = new User();
+        user.setUsername("luojun");
+        user.setAge(23);
+        modelAndView.addObject("user",user);
+        modelAndView.setViewName("/index.jsp");
+        return modelAndView;
+    }
+
+    @RequestMapping("/res")
+    //直接返回字符串，需要加ResponseBody
+    @ResponseBody   //告诉springMVC返回的字符串不是视图名,而是以响应体返回的数据
+    public String res(){
+        return "luojun";
     }
 }

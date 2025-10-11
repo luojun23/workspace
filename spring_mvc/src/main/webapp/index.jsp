@@ -10,6 +10,7 @@
   <head>
     <title>Title</title>
       <h1>hello SpringMvc</h1>
+    <h1>转发的数据:${user.username}+${user.age}</h1>
   </head>
   <body>
 

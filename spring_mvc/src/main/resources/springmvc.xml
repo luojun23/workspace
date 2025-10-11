@@ -2,16 +2,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 ">
         <context:component-scan base-package="com.njtech.controller"></context:component-scan>
 
-<!--        &lt;!&ndash;   配置HandlerMapping     &ndash;&gt;-->
+<!--        &lt;!&ndash;   配置HandlerMapping:用来解析RequestMapping  &ndash;&gt;-->
 <!--        <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>-->
 
-<!--        &lt;!&ndash;  配置HandlerAdapter      &ndash;&gt;-->
+<!--        &lt;!&ndash;配置HandlerAdapter&ndash;&gt;-->
 <!--        <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
 <!--                <property name="messageConverters">-->
 <!--                        <list>-->
@@ -19,6 +21,7 @@
 <!--                        </list>-->
 <!--                </property>-->
 <!--        </bean>-->
+        <mvc:annotation-driven></mvc:annotation-driven>
 
         <!-- 配置文件解析器对象，要求id名称必须是multipartResolver -->
         <bean id="multipartResolver"
@@ -33,4 +36,17 @@
                 <property name="maxInMemorySize" value="1048576"></property>
         </bean>
 
+        <!--向容器中注入静态资源处理器-->
+        <mvc:default-servlet-handler></mvc:default-servlet-handler>
+        
+        
+        <!--mvc拦截器-->
+        <mvc:interceptors>
+                <!--设置拦截器-->
+                <mvc:interceptor>
+                        <mvc:mapping path="/**"/>
+                        <!--将拦截器添加到spring容器-->
+                        <bean class="com.njtech.inteceptors.MyInterceptor1"></bean>
+                </mvc:interceptor>
+        </mvc:interceptors>
 </beans>
