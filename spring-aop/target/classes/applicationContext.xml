@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       https://www.springframework.org/schema/aop/spring-aop.xsd
+       ">
+
+    <context:component-scan base-package="com.njtech"></context:component-scan>
+<!--    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>-->
+
+<!--    &lt;!&ndash;  配置aop  &ndash;&gt;-->
+<!--    <aop:config>-->
+<!--        &lt;!&ndash;    配置切线表达式：指定那些方法被增强    &ndash;&gt;-->
+<!--        <aop:pointcut id="MyPointcut" expression="execution(void com.njtech.service.impl.UserServiceImpl.show1())"/>-->
+<!--        &lt;!&ndash;   配置织入，目的是执行那些切点与那些通知结合     &ndash;&gt;-->
+<!--        <aop:aspect ref="myAdvice">-->
+<!--&lt;!&ndash;            前置通知&ndash;&gt;-->
+<!--&lt;!&ndash;            <aop:before method="BeforeAdvice" pointcut-ref="MyPointcut"></aop:before>&ndash;&gt;-->
+<!--&lt;!&ndash;            后置通知&ndash;&gt;-->
+<!--&lt;!&ndash;            <aop:after-returning method="AfterReturingAdvice" pointcut-ref="MyPointcut"></aop:after-returning>&ndash;&gt;-->
+<!--&lt;!&ndash;            <aop:before method="BeforeAdvice" pointcut="execution(void com.njtech.service.impl.UserServiceImpl.show1())"></aop:before>&ndash;&gt;-->
+<!--            &lt;!&ndash;返回值、包名、类名、方法名均可使用*代替，参数可用..代替&ndash;&gt;-->
+<!--&lt;!&ndash;                <aop:before method="BeforeAdvice" pointcut="execution(* com.njtech.service.*.*.*(..))"></aop:before>&ndash;&gt;-->
+<!--&lt;!&ndash;            环绕通知&ndash;&gt;-->
+<!--&lt;!&ndash;                <aop:around method="AroundAdvice" pointcut="execution(void com.njtech.service.impl.UserServiceImpl.show1())"></aop:around>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;      最终通知      &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;             <aop:after method="AfterAdvice" pointcut="execution(void com.njtech.service.impl.UserServiceImpl.show1())"></aop:after>&ndash;&gt;-->
+
+<!--        </aop:aspect>-->
+<!--        -->
+<!--        -->
+<!--    </aop:config>-->
+
+    <bean id="Myadvice2" class="com.njtech.advice.Myadvice2"></bean>
+
+    <aop:config>
+        <aop:pointcut id="myAdvice" expression="execution(void com.njtech.service.impl.UserServiceImpl.show1())"/>
+        <aop:advisor advice-ref="Myadvice2" pointcut-ref="myAdvice"></aop:advisor>
+    </aop:config>
+
+
+</beans>

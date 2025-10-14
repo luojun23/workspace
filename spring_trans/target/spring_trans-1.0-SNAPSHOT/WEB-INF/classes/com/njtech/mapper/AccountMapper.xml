@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.njtech.mapper.AccountMapper">
+
+    <!--实体映射-->
+    <resultMap id="base_result_map" type="com.njtech.dao.AccountDao">
+        <!--用户ID-->
+        <result column="account_name" property="accountName"/>
+        <!--昵称-->
+        <result column="money" property="money"/>
+    </resultMap>
+
+        <update id="incrMoney">
+            update tb_account set money = money + #{money} where account_name = #{account}
+        </update>
+
+    <update id="decrMoney">
+        update tb_account set money = money - #{money} where account_name = #{account}
+    </update>
+</mapper>
