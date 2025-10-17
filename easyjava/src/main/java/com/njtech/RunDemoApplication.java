@@ -1,11 +1,11 @@
 package com.njtech;
 
-import org.springframework.boot.SpringApplication;
+import com.njtech.builder.buildTable;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class RunDemoApplication {
     public static void main(String[] args) {
-        SpringApplication.run(RunDemoApplication.class,args);
+        buildTable.getTable();
     }
 }
